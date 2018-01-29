@@ -529,7 +529,6 @@ aside{
 .bannertu{
 	width: 830px;
 	height: 100%;
-	background: black;
 	float: left;
 	position: relative;
 }
@@ -537,11 +536,11 @@ aside{
     position: absolute; 
     left: 0;
     top: 0;
-	opacity:0;
-	transition:opacity 1s;
+    opacity:0;
+    transition:opacity 1s;
 }
 .bannerpic .active{
-	opacity:1;
+    opacity:1;
 }
 .banner-a1{
 	width: 150px;
