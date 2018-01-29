@@ -4,7 +4,7 @@
 window.onload=function () {
         let n=0;
         let lis=document.querySelectorAll('.bannerpic li');
-        let banner=document.querySelector('.bannerpic')
+        let banner=document.querySelector('.bannertu')
         let right=document.querySelector('.jiantoudi.right')
         let left=document.querySelector('.jiantoudi.left')
         let cirs=document.querySelectorAll('.lunbodian li')
