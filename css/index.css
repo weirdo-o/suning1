@@ -529,6 +529,7 @@ aside{
 .bannertu{
 	width: 830px;
 	height: 100%;
+	background: black;
 	float: left;
 	position: relative;
 }
@@ -536,11 +537,11 @@ aside{
     position: absolute; 
     left: 0;
     top: 0;
-    opacity:0;
-    transition:opacity 1s;
+	opacity:0;
+	transition:opacity 1s;
 }
 .bannerpic .active{
-    opacity:1;
+	opacity:1;
 }
 .banner-a1{
 	width: 150px;
@@ -1780,76 +1781,121 @@ a.active1 .dajuhui_p{
 .jydqtitle1{
 	color: #5f6cb7;
 }
-.cainixihuan{
-    width: 1190px;
-    height: 393px;
-}
-.cnxhtop{
+
+/* 猜你喜欢 开始 */
+.guess{
 	width: 1190px;
+	height: auto;
+	margin: 0 auto;
+	/* background: red; */
+}
+.guess_top{
+	width: 100%;
 	height: 52px;
-	border-bottom: none;
+	background: #f2f2f2;
+	overflow: hidden;
 }
-.cnxhtitle0{
-    height: 21px;
-    background: #f2f2f2;
-    border-left: 3px solid #fe9901;
-    margin-top: 10px;
-    line-height: 21px;
-    color: #333;
-    padding-left: 20px;
-    margin-top: 15px;
+.guess_top p{
+	width: 96px;
+	height: 20px;
+	margin-top: 20px;
+	font-size: 18px;
+	color: #333;
+	line-height: 20px;
+	text-align: center;
+	border-left: 2px solid #fe9901;
 }
-.cnxhbottom{
-	width: 1190px;
-	height: 341px;
-	background: black;
+.guess_box{
+	width: 100%;
+	height: auto;
 }
-.cnxhlist{
+.guess_box ul{
 	width: 237px;
-	height: 340px;
-	border-left: 1px solid #eee;
+	height: 341px;
+	background: #fff;
+	border-left: 1px solid #f2f2f2;
 	border-bottom: 1px solid #eee;
+	overflow: hidden;
+	float: left;
 }
-.cnxhbottom{
-	height: 341px;
-	background: pink;
+.guess_box ul a{
+	width: 221px;
+	height: 221px;
+	display: block;
+	margin: 0 auto;
 }
-.cnxhtupian{
-	width: 237px;
-	height: 226px;
-}
-.cnxhtupian img{
+.guess_box ul a img{
+	display: block;
 	width: 180px;
 	height: 190px;
-	margin: 20px 0 0 40px ;
-	transition: all 1s;
+	margin:10px 0 0 20px;
+	transition: all 0.5s;
 }
-.djh-list:hover .cnxhtupian img{
-	transform: scale(1.1, 1.1);
+.guess_box ul:hover a img{
+	transform: scale(1.05, 1.05);
 }
-.cnxhwenzi1{
-	width: 196px;
-	height: 100px;
-	/* background: pink; */
-	padding: 15px 21px 0;
-}
-.wenzid4{
+.guess_box ul a:nth-child(2) p:first-child{
+	width: 188px;
+	height: 35px;
+	/*margin-top: 16px;*/
+	margin-left: 22px;
+	line-height: 20px;
 	font-size: 11px;
-	color: #474747;
-	line-height: 18px;
+	color: #333;
 }
-.cnxhjiage{
-	width: 144px;
-	height: 25px;
-	/* background: yellow; */
-	margin-top: 10px;
+.guess_box ul a:nth-child(2) p:first-child i{
+	font-style: normal;
+	border: 1px solid #ff6600;
+	border-radius: 3px;
 }
-.jiage-d1{
+.guess_box ul:hover a:nth-child(2) p:first-child{
+	color: #f60;
+}
+.guess_price{
+	width: 52px;
+	height: 11px;
+	line-height: 11px;
+	color: #f60;
+	font-size: 11px;
+	margin-top: 11px;
+	margin-left: 20px;
+}
+.guess_djh_left{
+	margin-left: 19px;
+	margin-top: 12px;
+	width: 40px;
+	height: 16px;
+	font-size: 11px;
+	line-height: 16px;
+	background: #f60;
+	color: #fff;
 	float: left;
-	font-size: 12px;
-	color: #ff6600;
+	text-align: center;
+	font-style: normal;
+	border-radius: 3px;
+	float: left;
 }
-/* 猜你喜欢结束 */
+.guess_djh_right{
+	margin-left: 10px;
+	margin-top: 12px;
+	width: 54px;
+	height: 16px;
+	font-size: 11px;
+	line-height: 16px;
+	background: #f60;
+	color: #fff;
+	float: left;
+	text-align: center;
+	font-style: normal;
+	border-radius: 3px;
+	float: left;
+}
+.clear{
+	display: block;
+	clear: both;
+}
+/* 猜你喜欢 结束 */
+
 /* 底部 */
 .dibu{
 	width: 100%;
