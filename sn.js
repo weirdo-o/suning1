@@ -88,5 +88,67 @@ window.onload=function () {
             list[index].classList.add('activebtm')
         }
     })
+
+
+// 侧导航
+    let floor=document.querySelectorAll('.floor .diwuceng')
+    console.log(floor)
+    let celan=document.querySelector('.aside2')
+    let aside=document.querySelectorAll('.aside2-list li')
+    let h=document.documentElement.clientHeight
+    // let anniu=document.querySelector('.anniu')
+    let hidden=document.querySelector('.hidden')
+    // let flag=true
+    let out=true
+    let back=false
+    window.onscroll=function () {
+        if(!flag){
+            return
+        }
+        let tops=document.body.scrollTop?  document.body.scrollTop:document.documentElement.scrollTop
+        if(tops>=floor[0].offsetTop){
+            if(out){
+                out=false
+                animate(hidden,{top:0},100,function () {
+                    back=true
+                })
+                animate(celan,{opacity:1},100)
+            }
+        }else{
+            if(back){
+                back=false
+                animate(hidden,{top:-100},100,function () {
+                    out=true
+                })
+                animate(celan,{opacity:0},100)
+            }
+        }
+
+
+        floor.forEach(function (val,index) {
+            if(tops>=val.offsetTop-h){
+                aside.forEach(function (va) {
+                    va.classList.remove('active')
+                })
+                aside[index].classList.add('active')
+            }
+        })
+    }
+    // anniu.onclick=function () {
+    //     animate(document.body,{scrollTop:0})
+    //     animate(document.documentElement,{scrollTop:0},function () {
+    //     })
+    // }
+    aside.forEach(function (al,index) {
+        al.onclick=function () {
+            flag=false
+            this.classList.add('active')
+            let tt=floor[index].offsetTop
+            animate(document.body,{scrollTop:tt})
+            animate(document.documentElement,{scrollTop:tt},function () {
+                flag=true
+            })
+        }
+    })
     }
 
