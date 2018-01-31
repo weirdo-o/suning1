@@ -12,11 +12,11 @@
 }
 @font-face {
   font-family: 'iconfont';  /* project id 526787 */
-  src: url('https://at.alicdn.com/t/font_526787_5l63dxe9wll92j4i.eot');
-  src: url('https://at.alicdn.com/t/font_526787_5l63dxe9wll92j4i.eot?#iefix') format('embedded-opentype'),
-  url('https://at.alicdn.com/t/font_526787_5l63dxe9wll92j4i.woff') format('woff'),
-  url('https://at.alicdn.com/t/font_526787_5l63dxe9wll92j4i.ttf') format('truetype'),
-  url('https://at.alicdn.com/t/font_526787_5l63dxe9wll92j4i.svg#iconfont') format('svg');
+  src: url('http://at.alicdn.com/t/font_526787_5l63dxe9wll92j4i.eot');
+  src: url('http://at.alicdn.com/t/font_526787_5l63dxe9wll92j4i.eot?#iefix') format('embedded-opentype'),
+  url('http://at.alicdn.com/t/font_526787_5l63dxe9wll92j4i.woff') format('woff'),
+  url('http://at.alicdn.com/t/font_526787_5l63dxe9wll92j4i.ttf') format('truetype'),
+  url('http://at.alicdn.com/t/font_526787_5l63dxe9wll92j4i.svg#iconfont') format('svg');
 }
 .iconfont{
     font-family: 'iconfont';	
@@ -57,7 +57,9 @@ i{
 }
 .as-list:hover{
     background: #F60;
-    
+}
+.as-list.active{
+	background: #F60;
 }
 .as-list:hover .as-list-wz{
 	color: #fff;
@@ -529,6 +531,7 @@ aside{
 .bannertu{
 	width: 830px;
 	height: 100%;
+	background: black;
 	float: left;
 	position: relative;
 }
