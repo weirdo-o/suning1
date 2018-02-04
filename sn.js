@@ -92,41 +92,53 @@ window.onload=function () {
 
 // 侧导航
     let floor=document.querySelectorAll('.floor .diwuceng')
-    console.log(floor)
     let celan=document.querySelector('.aside2')
     let aside=document.querySelectorAll('.aside2-list li')
     let h=document.documentElement.clientHeight
-    // let anniu=document.querySelector('.anniu')
+    let anniu=document.querySelector('.as-di')
     let hidden=document.querySelector('.hidden')
+    let djh=document.querySelector('.dajuhui')
     // let flag=true
     let out=true
     let back=false
+    let aaa=true
+    let bbb=false
     window.onscroll=function () {
         if(!flag){
             return
         }
         let tops=document.body.scrollTop?  document.body.scrollTop:document.documentElement.scrollTop
-        if(tops>=floor[0].offsetTop){
+        if(tops>=djh.offsetTop){
             if(out){
                 out=false
-                animate(hidden,{top:0},100,function () {
-                    back=true
-                })
-                animate(celan,{opacity:1},100)
+                hidden.style.display='block'
+                back=true
             }
         }else{
             if(back){
                 back=false
-                animate(hidden,{top:-100},100,function () {
-                    out=true
+                hidden.style.display='none'
+                out=true
+            }
+        }
+        if(tops>=floor[0].offsetTop-300){
+            if(aaa){
+                aaa=false
+                animate(celan,{opacity:1},100,function () {
+                    bbb=true
                 })
-                animate(celan,{opacity:0},100)
+            }
+        }else{
+            if(bbb){
+                bbb=false
+                animate(celan,{opacity:0},100,function () {
+                    aaa=true
+                })
             }
         }
 
-
         floor.forEach(function (val,index) {
-            if(tops>=val.offsetTop-h){
+            if(tops>=val.offsetTop+400-h){
                 aside.forEach(function (va) {
                     va.classList.remove('active')
                 })
@@ -134,21 +146,161 @@ window.onload=function () {
             }
         })
     }
-    // anniu.onclick=function () {
-    //     animate(document.body,{scrollTop:0})
-    //     animate(document.documentElement,{scrollTop:0},function () {
-    //     })
-    // }
+    anniu.onclick=function () {
+        animate(document.body,{scrollTop:0})
+        animate(document.documentElement,{scrollTop:0},200,function () {
+        })
+    }
     aside.forEach(function (al,index) {
         al.onclick=function () {
             flag=false
-            this.classList.add('active')
-            let tt=floor[index].offsetTop
-            animate(document.body,{scrollTop:tt})
-            animate(document.documentElement,{scrollTop:tt},function () {
+            aside.forEach(function (va) {
+                va.classList.remove('active')
+            })
+            al.classList.add('active')
+            let to=floor[index].offsetTop
+            animate(document.body,{scrollTop:to})
+            animate(document.documentElement,{scrollTop:to},function () {
                 flag=true
             })
         }
     })
+
+    let fl=document.querySelector('.fenleibox')
+    let flcl=document.querySelector('.fenleibox .celan')
+    fl.onmouseover=function () {
+        flcl.style.display='block'
+    }
+    fl.onmouseout=function () {
+        flcl.style.display='none'
+    }
+
+// 节点轮播
+    function jiedian(box) {
+        let big=box.querySelector('.big')
+        let right1=box.querySelector('.right')
+        let left1=box.querySelector('.left')
+        // let flag=true
+        let w=box.offsetWidth
+        function move() {
+            if(!flag){
+                return
+            }
+            flag=false
+            let first=big.firstElementChild
+            animate(big,{left:-w},function () {
+                big.appendChild(first)
+                big.style.left=0
+                flag=true
+            })
+        }
+
+        right1.onclick=function () {
+            move()
+        }
+        left1.onclick=function () {
+            if(!flag){
+                return
+            }
+            flag=false
+            let last=big.lastElementChild
+            let first=big.firstElementChild
+            big.insertBefore(last,first)
+            big.style.left=-w+'px'
+            animate(big,{left:0},function () {
+                flag=true
+            })
+        }
+    }
+    // 大聚惠
+    let box=document.querySelector('.djh-bottom')
+    jiedian(box)
+let spc=document.querySelector('.sp-cen-box')
+    jiedian(spc)
+
+ // 排行双下标轮播
+
+    let now=0;
+    let next=0;
+    let boxph=document.querySelector('.paihang-xia')
+    let ph=document.querySelectorAll('.paihang-xia .phb-list')
+    let rightph=document.querySelector('.paihang .jiantoudi.right')
+    let leftph=document.querySelector('.paihang .jiantoudi.left')
+    let cirsph=document.querySelectorAll('.ph-yuandian li')
+    let width=parseInt(window.getComputedStyle(boxph,null).width)
+    // let flag=true
+    function moveph() {
+        if(!flag){
+            return
+        }
+        flag=false
+        next=now+1
+        if(next>=ph.length){
+            next=0
+        }
+        ph[next].style.left='100%'
+        animate(ph[now],{left:-width},300)
+        animate(ph[next],{left:0},300,function () {
+            flag=true
+        })
+        cirsph[now].classList.remove('active')
+        cirsph[next].classList.add('active')
+        now=next
+    }
+    rightph.onclick=function () {
+        moveph()
+    }
+    leftph.onclick=function () {
+        if(!flag){
+            return
+        }
+        flag=false
+        next=now-1
+        if(next<0){
+            next=ph.length-1
+        }
+        ph[next].style.left='-100%'
+        animate(ph[now],{left:width},300)
+        animate(ph[next],{left:0},300,function () {
+            flag=true
+        })
+        cirsph[now].classList.remove('active')
+        cirsph[next].classList.add('active')
+        now=next
+    }
+    cirsph.forEach(function (val,index) {
+        val.onclick=function () {
+            if(!flag){
+                return
+            }
+            flag=false
+            next=index
+            if(next>now){
+                ph[next].style.left='100%'
+                animate(ph[now],{left:-width},300)
+                animate(ph[next],{left:0},300,function () {
+                    flag=true
+                })
+                cirsph[now].classList.remove('active')
+                cirsph[next].classList.add('active')
+                now=next
+            }else if(next<now){
+                ph[next].style.left='-100%'
+                animate(ph[now],{left:width},300)
+                animate(ph[next],{left:0},300,function () {
+                    flag=true
+                })
+                cirsph[now].classList.remove('active')
+                cirsph[next].classList.add('active')
+                now=next
+            }else{
+                flag=true
+            }
+        }
+    })
+
+// 头部隐藏
+
+
     }
 
